@@ -1,0 +1,149 @@
+==============================================================================
+BEER GAME SIMULATOR - SETUP & RUN GUIDE
+==============================================================================
+
+WHAT YOU HAVE:
+- Python backend (beer_game_backend.py) - handles the game logic
+- React frontend (App.jsx + App.css) - what students see
+- These files are in: /home/claude/
+
+GOAL: Get both running on your local machine so you can test.
+
+==============================================================================
+STEP 1: INSTALL PYTHON (if you don't have it)
+==============================================================================
+
+Go to: https://www.python.org/downloads/
+Download and install Python 3.9 or newer
+Choose "Add Python to PATH" when installing
+
+To verify: Open terminal/command prompt, type:
+  python --version
+
+Should say Python 3.x.x
+
+==============================================================================
+STEP 2: INSTALL REQUIRED PYTHON PACKAGES
+==============================================================================
+
+Open terminal/command prompt and run these commands (one at a time):
+
+  pip install fastapi
+  pip install uvicorn
+  pip install python-multipart
+
+Wait for each to finish.
+
+==============================================================================
+STEP 3: RUN THE PYTHON BACKEND
+==============================================================================
+
+In terminal, navigate to the folder with beer_game_backend.py
+
+Then run:
+  python beer_game_backend.py
+
+You should see:
+  🍺 BEER GAME BACKEND STARTING...
+  Running on http://localhost:8000
+  Docs: http://localhost:8000/docs
+
+** KEEP THIS TERMINAL OPEN **
+The backend must be running for the frontend to work.
+
+==============================================================================
+STEP 4: SET UP REACT FRONTEND (IN A NEW TERMINAL)
+==============================================================================
+
+You need Node.js installed first.
+Go to: https://nodejs.org/
+Download the LTS version
+Install it
+
+To verify: Open a NEW terminal, type:
+  node --version
+  npm --version
+
+Both should show version numbers.
+
+==============================================================================
+STEP 5: CREATE A REACT PROJECT
+==============================================================================
+
+In a NEW terminal (not the one running Python), run:
+
+  npx create-react-app beer-game
+
+Wait for this to finish (it will take a few minutes).
+
+Then navigate into it:
+  cd beer-game
+
+==============================================================================
+STEP 6: REPLACE THE DEFAULT FILES
+==============================================================================
+
+The create-react-app command created a folder structure. You need to replace
+the default files with the ones I gave you.
+
+In the beer-game folder:
+- Replace: src/App.jsx (with the App.jsx I created)
+- Replace: src/App.css (with the App.css I created)
+
+Just copy and paste the content into these files.
+
+==============================================================================
+STEP 7: START THE REACT SERVER
+==============================================================================
+
+In that same terminal, run:
+  npm start
+
+A browser window should open to: http://localhost:3000
+
+You should see the Beer Game menu with "Demo Mode" and "Try It Yourself" buttons.
+
+==============================================================================
+STEP 8: TEST IT
+==============================================================================
+
+1. Click "Demo Mode"
+   - You should see a 2-3 minute automated simulation
+   - The bullwhip effect will be visible in the table
+   
+2. Click "Back" then "Try It Yourself"
+   - You control the retailer
+   - Enter how many units you want to order
+   - Click "Place Order"
+   - See what happens upstream
+
+If you get an error "Error connecting to backend":
+- Make sure the Python backend is still running (check that terminal)
+- The backend terminal should show requests coming in
+
+==============================================================================
+CHECKPOINT 1A: COMPLETE ✓
+==============================================================================
+
+You now have:
+✓ Working game logic (Python backend)
+✓ Working UI (React frontend)
+✓ Demo mode (auto-play bullwhip)
+✓ Intro mode (student plays)
+
+ISSUES OR QUESTIONS?
+- Check that BOTH terminals are running (Python backend + React)
+- Make sure you're accessing http://localhost:3000 (React)
+- The Python backend is at http://localhost:8000 (you don't need to open this)
+
+==============================================================================
+NEXT STEPS (FOR FRIDAY):
+==============================================================================
+
+1. Test this with a friend or colleague
+2. Let me know what breaks or what you want different
+3. I'll refine for launch
+
+Email/chat me issues, and I'll fix them ASAP.
+
+Timeline: You test Wed/Thu, I refine Thu evening, ship Friday morning.
