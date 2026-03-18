@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+
 function App() {
   const [gameState, setGameState] = useState(null);
   const [mode, setMode] = useState(null); // null, 'demo', 'intro'
@@ -14,7 +16,7 @@ function App() {
     setGameOver(false);
     
     try {
-      const res = await fetch('http://localhost:8000/api/demo', { method: 'POST' });
+      const res = await fetch(`${API_URL}/api/demo`, { method: 'POST' });
       const data = await res.json();
       setGameState(data);
     } catch (err) {
@@ -31,11 +33,11 @@ function App() {
     setGameOver(false);
     
     try {
-      const res = await fetch('http://localhost:8000/api/new-game', { method: 'POST' });
+      const res = await fetch(`${API_URL}/api/new-game`, { method: 'POST' });
       const data = await res.json();
       
       // Fetch initial state
-      const stateRes = await fetch('http://localhost:8000/api/state');
+      const stateRes = await fetch(`${API_URL}/api/state`);
       const stateData = await stateRes.json();
       setGameState(stateData);
     } catch (err) {
@@ -48,7 +50,7 @@ function App() {
   const placeOrder = async () => {
     try {
       const order = parseInt(retailerOrder);
-      const res = await fetch(`http://localhost:8000/api/place-order?retailer_order=${order}`, {
+      const res = await fetch(`${API_URL}/api/place-order?retailer_order=${order}`, {
         method: 'POST',
       });
       const data = await res.json();
