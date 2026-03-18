@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
@@ -8,14 +8,11 @@ function App() {
   const [mode, setMode] = useState(null); // null, 'demo', 'intro'
   const [retailerOrder, setRetailerOrder] = useState('4');
   const [gameOver, setGameOver] = useState(false);
-  const [demoRunning, setDemoRunning] = useState(false);
-
   // Run demo: auto-play
   const startDemo = async () => {
     setMode('demo');
-    setDemoRunning(true);
     setGameOver(false);
-    
+
     try {
       const res = await fetch(`${API_URL}/api/demo`, { method: 'POST' });
       const data = await res.json();
@@ -24,8 +21,6 @@ function App() {
       console.error('Demo error:', err);
       alert('Error connecting to backend. Is the server running?');
     }
-    
-    setDemoRunning(false);
   };
 
   // Start intro: new interactive game
@@ -34,9 +29,8 @@ function App() {
     setGameOver(false);
     
     try {
-      const res = await fetch(`${API_URL}/api/new-game`, { method: 'POST' });
-      const data = await res.json();
-      
+      await fetch(`${API_URL}/api/new-game`, { method: 'POST' });
+
       // Fetch initial state
       const stateRes = await fetch(`${API_URL}/api/state`);
       const stateData = await stateRes.json();
