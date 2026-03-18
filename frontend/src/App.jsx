@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
@@ -6,7 +6,6 @@ function App() {
   const [mode, setMode] = useState(null); // null, 'demo', 'intro'
   const [retailerOrder, setRetailerOrder] = useState('4');
   const [gameOver, setGameOver] = useState(false);
-  const [demoRunning, setDemoRunning] = useState(false);
 
   // Run demo: auto-play
   const startDemo = async () => {
